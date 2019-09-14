@@ -76,6 +76,10 @@ def package_action(request):
             packages = json.loads(request.body)
             response = genPdf(packages)
             return JsonResponse(response)
+        elif action == 'del':
+            packages = json.loads(request.body)
+            response = delPackages(packages)
+            return JsonResponse(response)
         else:
             return JsonResponse(getresponsemsg(400, 'no found action'))
 

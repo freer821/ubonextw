@@ -140,3 +140,12 @@ def genPdf(packages):
     pdfs_base64 = genPdfBase64(content_array)
 
     return getresponsemsg(200, pdfs_base64)
+
+
+def delPackages(packages):
+    for p in packages:
+        package_in_db = Package.objects.filter(inland_code=p.get('inland_code','')).first()
+        if package_in_db is not None:
+            package_in_db.delete()
+
+    return getresponsemsg(200)

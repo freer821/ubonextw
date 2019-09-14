@@ -5,10 +5,10 @@ function openmodal(modal_id) {
 function delPackage(table_id) {
     let packages_selected = $("#" + table_id).bootstrapTable('getAllSelections');
     if (packages_selected.length > 0) {
-        postsubmit('/ordertopay?action=del', JSON.stringify(packages_selected), function (response) {
+        postsubmit('/package_action?action=del', JSON.stringify(packages_selected), function (response) {
             response_dialog(response, function () {
                 bootbox.alert("订单成功删除!", function () {
-                    loadSubPage("ordertopay");
+                    loadSubPage("packages");
                 });
             })
         });
