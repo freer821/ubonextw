@@ -10,7 +10,7 @@ DATABASES = {
         'NAME': 'ubonextw',
         'USER': 'root',
         'PASSWORD': 'qwer1234@',
-        'HOST': 'docker_ub-mariadb_1',
+        'HOST': 'ub-mariadb',
         'PORT': '3306',
         'ATOMIC_REQUESTS': True,
         'OPTIONS': {
