@@ -5,6 +5,7 @@ from django.forms.models import model_to_dict
 from .models import *
 from scripts.utils import *
 from .excel import *
+from .pdf import genPdfBase64
 
 class PackageConfig(AppConfig):
     name = 'package'
@@ -92,249 +93,42 @@ def getPackageByID(pid):
     return package
 
 
-def genPdf(user, orders):
-    pdf_generator = PdfGenerator(pdf_config)
+def genPdf(packages):
     content_array = []
-    #origin_country = getUserCountry(user)
-    origin_country = 'DE'
-    for o in orders:
-        if o['status_no'] == '10' or o['status_no'] == '120':
-            continue
+    for p in packages:
+        goods_descr = p.get('goods_descr','') + ' *'+p.get('goods_quantity','')+', '
 
-        if o.get('trans_code_backup', '') and len(o.get('trans_code_backup', '')) > 0:
-            o['inland_code'] = o['trans_code_backup']
+        content = {
+            'logistic_category': 'sf_tw',
 
-        receiver_name = o['receiver_name']
-        receiver_tel = o['receiver_tel']
+            "barcode_no": p.get('inland_code',''),
+            "des_code": p.get('des_code',''),
+            "sender_name": p.get('sender',''),
+            "sender_tel": p.get('sender_tel',''),
+            "sender_address": p.get('sender_addr',''),
+            "receiver_name": p.get('receiver',''),
+            "receiver_tel": p.get('receiver_tel',''),
+            "receiver_address": p.get('receiver_addr',''),
 
-        receiver_address = o['receiver_province']+o['receiver_city']+o['receiver_district']+o['receiver_street']
+            "sf_monthcard_no": p.get('sf_monthcard_no',''),
+            "customer_no": p.get('sf_monthcard_no',''),
 
-        barcode_no = o['inland_code']
-        sender_name = o['sender_name']
-        sender_tel = o['sender_tel']
-        sender_address = o['sender_street'] +' '+ o['sender_hausnr']+ ','+o['sender_postcode']+' '+ o['sender_city']
-        goods_content, goods_count = getPackageGoods(o['id'])
-        if len(goods_content) > 100:
-            goods_content = goods_content[:100]
+            "goods_desc": goods_descr,
+            "barcode_no_1": p.get('inland_code',''),
 
-        goods_real_weight = o['package_real_weight']
-        goods_value = str(o['fee'])
-        logistic_category = getLogisticCategory(o['logistic_category_cagte_label'])
+            "sender_name_1": p.get('sender',''),
+            "sender_tel_1": p.get('sender_tel',''),
+            "sender_address_1": p.get('sender_addr',''),
+            "receiver_name_1": p.get('receiver',''),
+            "receiver_tel_1": p.get('receiver_tel',''),
+            "receiver_address_1": p.get('receiver_addr',''),
 
-        if o['customer_reference_no']:
-            ref_no = o['customer_reference_no']
-        else:
-            ref_no = o['order_no']
-
-        if logistic_category is not None:
-            custom_name = logistic_category.custom_name
-        else:
-            continue
-
-        if logistic_category.cagte_label == 'CCW':
-            content = {
-                'logistic_category': logistic_category.cagte_label,
-
-                "barcode_no": barcode_no,
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-                "goods_desc": goods_content,
-
-                "barcode_no_1": barcode_no,
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-                "order_no": ref_no,
-                "custom_name": custom_name,
-                "origin_country": origin_country,
-            }
-        elif logistic_category.cagte_label == 'DE-EMSNL-BCNF':
-            content = {
-                'logistic_category': logistic_category.cagte_label,
-
-                "barcode_no": barcode_no,
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-
-                "client_code": '',
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-
-                "receiver_postcode": o['receiver_postcode'],
-
-                "goods_name": goods_content[0:8],
-                "goods_count": str(goods_count),
-                "goods_real_weight": str(goods_real_weight),
-                "goods_value": goods_value,
-
-                "barcode_no_1": barcode_no,
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "order_no_1": ref_no,
-                "sender_name_1": sender_name,
-                "sender_tel_1": sender_tel,
-                "sender_address_1": sender_address,
-
-                "comment": o['comment'],
-            }
-        elif logistic_category.cagte_label == 'CCL':
-            content = {
-                'logistic_category': logistic_category.cagte_label,
-
-                "barcode": barcode_no,
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-
-                "order_no": o['order_no'],
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-
-                "goods_desc": goods_content,
-
-                "weight": str(goods_real_weight),
-                "tiji_weight": str(goods_real_weight),
-
-                "length": '',
-                "width": '',
-                "height": '',
-
-                "goods_value": '',
-                "origin_country": origin_country,
-
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "sender_name_1": sender_name,
-                "sender_tel_1": sender_tel,
-                "sender_address_1": sender_address,
-
-                "ref_no": ref_no,
-                "origin_send_from": origin_country,
-
-                "custom_name": custom_name,
-                "barcode_1": barcode_no
-            }
-        elif logistic_category.cagte_label in['zqbc' , 'sh_yto_bc_wine']:
-            if o['customer_reference_no']:
-                customer_reference_no = o['customer_reference_no']
-            else:
-                customer_reference_no= o['order_no']
-
-            content = {
-                'logistic_category': 'zqbc',
-
-                "barcode": barcode_no,
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-                "goods_desc": goods_content,
-
-                "barcode_1": barcode_no,
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-                "order_no": o['order_no'],
-                "customer_reference_no": customer_reference_no,
-            }
-        elif logistic_category.postcode_type == '3s':
-            image_name = os.path.join(BASE_DIR, 'resource/pdf/3dmiandan/' + o['inland_code'] + '.' + 'jpg')
-            content = {
-                "work_dir": os.path.join(BASE_DIR, 'resource', 'pdf', 'work'),
-                'logistic_category': logistic_category.postcode_type,
-                'image_name': image_name
-            }
-        elif logistic_category.cagte_label =='P_DG_EMS_A_1':
-            if o['customer_reference_no']:
-                customer_reference_no = o['customer_reference_no']
-            else:
-                customer_reference_no= o['order_no']
-
-            content = {
-                'logistic_category': 'P_DG_EMS_A_1',
-
-                "barcode": barcode_no,
-
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-
-                "fenjiancode": o['reserved4'],
-
-                "weight": str(goods_real_weight),
-                "goods_count": str(goods_count),
-                "origin_country": 'DE',
-
-                "goods_desc": goods_content,
-                "customer_reference_no": customer_reference_no,
-
-                "sender_name_1": sender_name,
-                "sender_tel_1": sender_tel,
-                "sender_address_1": sender_address,
-
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "barcode_1": barcode_no,
-                "special_tag":'**'
-            }
-
-        elif logistic_category.cagte_label in ['hhbczw', 'fs_yto_milk', 'fs_yto_zw', 'cd_yto_bc_milk', 'sh_yto_bc_milk']:
-            if o['customer_reference_no']:
-                customer_reference_no = o['customer_reference_no']
-            else:
-                customer_reference_no= o['order_no']
-
-            content = {
-                'logistic_category': logistic_category.cagte_label,
-                "distribution_code": o['reserved4'],
-                "barcode": barcode_no,
-                "receiver_name": receiver_name,
-                "receiver_tel": receiver_tel,
-                "receiver_address": receiver_address,
-
-                "sender_name": sender_name,
-                "sender_tel": sender_tel,
-                "sender_address": sender_address,
-
-                "barcode_1": barcode_no,
-                "receiver_name_1": receiver_name,
-                "receiver_tel_1": receiver_tel,
-                "receiver_address_1": receiver_address,
-
-                "goods_desc": goods_content,
-                "goods_count": str(goods_count),
-
-                "customer_reference_no": customer_reference_no,
-                "cagte_label": logistic_category.cagte_label
-            }
-        else:
-            continue
+            "goods_desc_1": goods_descr,
+            "goods_num": p.get('goods_quantity','')
+        }
 
         content_array.append(content)
 
-    data = pdf_generator.generate(content_array)
-    if data:
-        return convertBinaryToBase64String(data)
-    else:
-        return ""
+    pdfs_base64 = genPdfBase64(content_array)
+
+    return getresponsemsg(200, pdfs_base64)

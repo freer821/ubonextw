@@ -55,11 +55,12 @@ def package_action(request):
         action = request.GET.get('action', '')
 
         if action == 'pdf':
-
-            return JsonResponse(packages)
+            packages = json.loads(request.body)
+            response = genPdf(packages)
+            return JsonResponse(response)
         else:
             return JsonResponse(getresponsemsg(400, 'no found action'))
 
     except Exception as e:
-        getLogger().error('package_action'+ str(e))
+        getLogger().error('package_action: '+ str(e))
         return JsonResponse(getresponsemsg(500, str(e)))
