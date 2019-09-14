@@ -1,0 +1,156 @@
+.login-dark {
+  /*height:1000px;*/
+  /*background:#475d62 url(货轮清晰.jpg);*/
+  background-size:cover;
+  /*position:relative;*/
+}
+
+.login-dark form {
+  max-width:320px;
+  width:90%;
+  background-color:#1e2833;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:40%;
+  left:50%;
+  color:#fff;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.login-dark .illustration {
+  text-align:center;
+  padding:15px 0 20px;
+  font-size:100px;
+  color:#2980ef;
+}
+
+.login-dark form .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+}
+
+.login-dark form .btn-primary {
+  background:#214a80;
+  border:none;
+  border-radius:4px;
+  padding:11px;
+  box-shadow:none;
+  margin-top:26px;
+  text-shadow:none;
+  outline:none;
+}
+
+.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+  background:#214a80;
+  outline:none;
+}
+
+.login-dark form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.login-dark form .forgot:hover, .login-dark form .forgot:active {
+  opacity:1;
+  text-decoration:none;
+}
+
+.login-dark form .btn-primary:active {
+  transform:translateY(1px);
+}
+
+img {
+  /*border:none;*/
+}
+
+.box {
+  box-shadow:04px8px0rgba(0, 0, 0, 0.2), 06px20px0rgba(0, 0, 0, 0.19);
+}
+
+.label-default {
+  font-family:Helvetica new,"WenQuanYi Micro Hei",sans-serif;
+}
+
+button, input, select, textarea {
+  resize:none;
+  /*border:none;*/
+  border-top:10px;
+  border:5px;
+}
+
+#LinkPayTheRest {
+}
+
+.DivToFloatRight {
+  float:right;
+}
+
+.login-Logo {
+  float:none;
+}
+
+.ubon-logo {
+  border:none;
+}
+
+.NaviTop {
+  position:fixed;
+  z-index:9999;
+}
+
+regist-card {
+}
+
+.Rigist-Label {
+  font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei",sans-serif;
+  float:right;
+}
+
+html {
+  font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei",sans-serif;
+}
+
+#Rigist-Label {
+  font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei",sans-serif;
+  float:right;
+  margin-right:20%;
+}
+
+button, input, select, textarea {
+  float:none;
+}
+
+.input-sm {
+  border-color:rgb(171,169,169);
+  border-style:solid;
+  border-width:1px;
+  border-radius:5px;
+}
+
+button, input, select, textarea {
+  border-color:rgb(171,169,169);
+  border-style:solid;
+  border-width:1px;
+  border-radius:5px;
+}
+
+#CustomAdressStandard {
+  border:none;
+}
+
+#UserCouponCodeOriginal {
+  border:none;
+}
+

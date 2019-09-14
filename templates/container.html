@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Ubonex(台湾)包裹管理系统</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/images/logo.jpg">
+    <meta name="apple-mobile-web-app-title" content="Flatkit">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="100x44" href="assets/images/logo.png">
+
+    <!-- style -->
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/styles/app.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/js/libs/jquery/footable/css/footable.core.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/js/libs/jquery/lightbox/lightbox.min.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/js/libs/jquery/waitme/waitMe.min.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/js/libs/jtable/bootstrap-table.min.css" type="text/css"/>
+
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/logisticservice.css">
+    <link rel="stylesheet" href="assets/css/deliveryservice.css">
+    <link rel="stylesheet" href="assets/css/EMS-Single.css">
+    <link rel="stylesheet" href="assets/css/EMS-Massiv.css">
+    <link rel="stylesheet" href="assets/css/big-amount-order.css">
+    <link rel="stylesheet" href="assets/css/order-to-pay.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+    <!-- ############ LAYOUT START-->
+
+    <!-- aside -->
+    <div id="aside" class="app-aside modal nav-dropdown">
+        <!-- fluid app aside -->
+        <div class="left navside dark dk" data-layout="column">
+            <div class="navbar no-radius">
+                <!-- brand -->
+                <a class="nav-link">
+                    <img src="assets/images/logo_m.jpg" alt="Ubonex(台湾)管理系统" height="28" width="150">
+                    <span class="hidden-folded">Ubonex(台湾)管理系统</span>
+                </a>
+                <!-- / brand -->
+            </div>
+            <div class="hide-scroll" data-flex>
+                <nav class="scroll nav-light">
+
+                    <ul class="nav" ui-nav>
+                        <li>
+                            <a href="/dashboard">
+                                <span class="nav-icon">
+                                  <i class="material-icons">&#xe3fc;</i>
+                                </span>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                             <a href="#" onclick="loadSubPage('upload_excel')">
+                                <span class="nav-icon">
+                                  <i class="material-icons">&#xe3fc;</i>
+                                </span>
+                                <span class="nav-text">上传包裹Excel</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                            <span class="nav-caret">
+                              <i class="fa fa-caret-down"></i>
+                            </span>
+                                <span class="nav-icon">
+                      <i class="material-icons">&#xe02f;</i>
+                    </span>
+                                <span class="nav-text">包裹管理</span>
+                            </a>
+                            <ul class="nav-sub">
+                                <li>
+                                    <a href="#" onclick="loadSubPage('packages')">
+                                        <span class="nav-text">全部包裹</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="loadSubPage('')">
+                                        <span class="nav-text">包裹扫码出单</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- / -->
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z0" role="main">
+        <div class="app-header white box-shadow">
+            <div class="navbar navbar-toggleable-sm flex-row align-items-center">
+                <!-- Open side - Naviation on mobile -->
+                <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
+                    <i class="material-icons">&#xe5d2;</i>
+                </a>
+                <!-- / -->
+
+                <!-- navbar collapse -->
+                <div class="collapse navbar-collapse" id="collapse">
+                    <!-- link and dropdown -->
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <!--a class="nav-link" href data-toggle="dropdown">
+                                 <img src="assets/images/logo.jpg" alt="">
+                            </a-->
+                        </li>
+                    </ul>
+                    <!-- / -->
+                </div>
+                <!-- / navbar collapse -->
+
+                <!-- navbar right -->
+                <ul class="nav navbar-nav ml-auto flex-row">
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-item" href="/logout">logout</a>
+                    </li>
+                </ul>
+                <!-- / navbar right -->
+            </div>
+        </div>
+
+
+        <div class="app-body" id="view">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <!-- / -->
+
+    <!-- ############ LAYOUT END-->
+
+</div>
+<!-- jQuery -->
+<script src="assets/js/libs/jquery/jquery/dist/jquery-3.3.1.js"></script>
+<!-- Bootstrap -->
+<script src="assets/js/libs/jquery/tether/dist/js/tether.min.js"></script>
+<script src="assets/js/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="assets/js/libs/jquery/lightbox/lightbox.min.js"></script>
+
+<!-- datatable -->
+<script src="assets/js/libs/jquery/footable/dist/footable.all.min.js"></script>
+<script src="assets/js/libs/jtable/bootstrap-table.min.js"></script>
+
+<script src="assets/js/libs/jquery/waitme/waitMe.min.js"></script>
+
+<!--script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script-->
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/libs/ui-nav.js"></script>
+<script src="assets/js/libs/moment.js"></script>
+<script src="assets/js/libs/bootbox.min.js"></script>
+
+</body>
+</html>

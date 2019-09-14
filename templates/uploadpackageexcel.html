@@ -1,0 +1,92 @@
+<div class="row" style="margin:0px;">
+    <div class="col" style="padding:15px;">
+        <form id="ems-single-box-sender" class="ems-single-box"
+              style="background-color:#ffffff;padding:0px 0px 0px 0px;" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col" style="padding:0px;">
+                <div class="row" style="margin:0px;">
+                    <div class="col" style="height:50px;padding:5px 0px 0px 10px;"><label
+                            class="col-form-label EMS-Single-font EMS-Single-heading"
+                            style="font-size:17px;color:rgb(126,127,128);"><strong>批量上传包裹单</strong><br></label></div>
+                    <div class="col-12" style="padding:0px 5px 0px 0px;">
+                        <hr class="ems-single-card-HR" style="margin:0px 0px 15px 0px;">
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col" style="height:50px;padding:5px 15px 0px 10px;float:right;">
+
+                        <input
+                                type="file" class="file" name="packsexcel" id="packsexcel" style="margin:5px 0px;">
+                        <span class="error-message">Error message here!</span>
+                        <button class="btn btn-primary" type="button" onclick="submitexcel()"
+                                style="margin:0px 5px 0px 5px;">上传
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px;">
+                <div class="col" style="height:50px;padding:5px 15px 0px 0px;float:right;"><a
+                        href="assets/download/shunfeng_excel_templates.xlsx"
+                        class="EMS-Single-font"
+                        style="margin:10px;font-size:15px;color:#007aa5;">注：点击可以下载批量上传包裹单的Excel模板<br></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- small modal -->
+<div id="show-details" class="modal" data-backdrop="true">
+    <div class="row-col h-v">
+        <div class="row-cell v-m">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">以下客户参考号， 未成功录入，请检查后重新录入</h5>
+                    </div>
+                    <div id="order-details" class="modal-body text-center p-lg">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / .modal -->
+
+<script type="text/javascript">
+
+    function submitexcel() {
+        var file = document.getElementById('packsexcel').files[0];
+        if (file) {
+            getBase64(file, function (base64) {
+                var jsonbody = {
+                    'excel': base64,
+                    'excelname': file.name
+                };
+
+                run_waitMe($('#container'), '上传中，请等待。。。。');
+                postsubmit('/upload_excel', JSON.stringify(jsonbody), function (data) {
+                    $('#container').waitMe('hide');
+                    if (data.status == 200) {
+                        bootbox.confirm("录入成功!", function (result) {
+                            if (result) {
+                                loadSubPage('packages')
+                            }
+                        });
+                    } else if (data.status == 208) {
+                        bootbox.alert('请保存结果列表', function () {
+                            download('结果列表.xlsx', "data:application/ms-excel;base64,", data.msg)
+                        })
+                    } else {
+                        bootbox.alert(data.msg);
+                    }
+                });
+            })
+        } else {
+            bootbox.alert('请选择Excel');
+        }
+
+    }
+</script>

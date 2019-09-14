@@ -1,0 +1,112 @@
+{% extends "container.html" %}
+{% block content %}
+    <div id="ContentToSwitch" style="background-color:#e1e6eb;height:100%;">
+        <!--div class="row" style="margin:0px;">
+            <div class="col-lg-12 col-md-12" id="Billinfo" style="padding:20px 20px 10px 20px;">
+                <div class="home-page-box" style="background-color:rgb(255,255,255);">
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="padding:15px 0px 0px 5px;">
+                            <form>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><span class="label label-default"
+                                                                                       style="font-size:20px;background-color:rgba(0,0,0,0);color:rgb(62,62,62);">财务信息 </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12">
+                            <hr style="margin:15px 0px;/*font-size:15px;*//*height:4px;*//*background-color:#9d9d9d;*/">
+                        </div>
+                    </div>
+                    <div class="row" style="padding:15px 15px 15px 15px;margin:0px;">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span class="label label-default"
+                                                                               id="AccountBalance"
+                                                                               style="background-color:rgba(0,0,0,0);color:rgb(62,62,62);font-size:15px;">已支付金额(RMB)： </span>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6"><span class="label label-default"
+                                                                               id="UserAccountBalance"
+                                                                               style="background-color:rgba(0,0,0,0);color:rgb(62,62,62);font-size:15px;">{{ info.paid_value }} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div-->
+        <div class="row" style="margin:0px;">
+            <div class="col-lg-3 col-md-6 col-sm-6" style="padding:20px 20px 10px 20px;">
+                <div class="home-page-box" style="background-color:rgb(255,255,255);">
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="padding:15px 0px 0px 5px;">
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:0px 0px 0px 40px;"><span
+                                        class="label label-default"
+                                        style="font-size:13px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">总订单数量 </span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:20px 0px 0px 40px;"><span
+                                        class="label label-default" id="PayFullQuantity"
+                                        style="font-size:39px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">{{ dashboard_info.packages_total_count }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="margin:30px 0px 0px 0px;height:16px;">
+                            <hr style="margin:15px 0px;/*font-size:15px;*//*height:4px;*//*background-color:#9d9d9d;*/">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6" style="padding:20px 20px 10px 20px;">
+                <div class="home-page-box" style="background-color:rgb(255,255,255);">
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="padding:15px 0px 0px 5px;">
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:0px 0px 0px 40px;"><span
+                                        class="label label-default"
+                                        style="font-size:13px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">待支付订单数量 </span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:20px 0px 0px 40px;"><span
+                                        class="label label-default" id="PayFullQuantity"
+                                        style="font-size:39px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="margin:30px 0px 0px 0px;height:16px;">
+                            <hr style="margin:15px 0px;/*font-size:15px;*//*height:4px;*//*background-color:#9d9d9d;*/">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6" style="padding:20px 20px 10px 20px;">
+                <div class="home-page-box" style="background-color:rgb(255,255,255);">
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="padding:15px 0px 0px 5px;">
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:0px 0px 0px 40px;"><span
+                                        class="label label-default"
+                                        style="font-size:13px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">已支付订单数量 </span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0px;">
+                                <div class="col-md-12" style="padding:20px 0px 0px 40px;"><span
+                                        class="label label-default" id="PaiedQuantity"
+                                        style="font-size:39px;background-color:rgba(0,0,0,0);color:rgb(125,125,125);">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;">
+                        <div class="col-md-12" style="margin:30px 0px 0px 0px;height:16px;">
+                            <hr style="margin:15px 0px;/*font-size:15px;*//*height:4px;*//*background-color:#9d9d9d;*/">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

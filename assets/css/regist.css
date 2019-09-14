@@ -1,0 +1,63 @@
+.nav-tabs .nav-item {
+  text-align: center;
+  font-weight: 600;
+  color: rgb(160,178,178);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: rgb(95,105,105);
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+a {
+  color: rgb(111,173,173);
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: rgb(160,178,178);
+  text-decoration: underline;
+}
+
+.card {
+  font-family: sans-serif;
+  box-shadow: 5px 6px 30px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+}
+
+.Input-Style {
+  background-color: rgb(238,249,254);
+  border-color: rgb(204,218,237);
+  border-radius: 3px;
+  font-family: "Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  color: rgb(126,137,137);
+  height: 35px;
+  width: 100%;
+  border: solid;
+  border-width: 1px;
+  padding-left: 15px;
+}
+
+.label-style {
+  color: rgb(156,157,157);
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+}
+
+#label-HR {
+  font-weight: 500;
+  color: rgb(64,64,64);
+  border-left: solid;
+  border-color: rgb(132,132,132);
+  border-width: 5px;
+  padding-left: 15px;
+  border-bottom: solid 1px rgb(200,200,200);
+}

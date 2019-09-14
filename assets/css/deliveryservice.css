@@ -1,0 +1,114 @@
+.delivery-service-card-text-content {
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  float:left;
+  padding-left:10px;
+  font-weight:lighter;
+  font-size:15px;
+}
+
+.delivery-service-card {
+  box-shadow:5px 6px 30px rgba(0,0,0,0.2);
+  float:none;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  border-left:solid;
+  border-width:5px;
+  /*border-color:#f6dd90;*/
+  min-width:300px;
+  /*max-width:600px;*/
+}
+
+.price-card-HR {
+  align-content:left;
+  width:100%;
+  color:rgb(123,123,123);
+  height:1px;
+  border:none;
+  border-top:1px solid rgb(123,123,123);
+}
+
+#delivery-service-card-toHome {
+  border-color:#cec1b5;
+}
+
+.delivery-service-card-heading {
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  font-size:15px;
+  font-weight:400;
+}
+
+#delivery-service-card-btn-1:active {
+  background-color:#ebebeb;
+  outline-color:#232323;
+  color:white;
+}
+
+#delivery-service-card-btn-1:focus {
+  background-color:#232323;
+  outline-color:#232323;
+  border-coler:#232323;
+  color:white;
+}
+
+#delivery-service-card-btn-1:hover {
+  background-color:#232323;
+  border:solid;
+  outline-color:#232323;
+  border-radius:6px;
+  color:white;
+}
+
+.delivery-service-card-btn {
+  background-color:#fafbfb;
+  border:solid;
+  border-width:2px;
+  color:rgb(81,80,80);
+  border-color:rgb(2,2,2);
+  padding:0px 15px;
+  text-align:center;
+  text-decoration:none;
+  display:inline-block;
+  font-size:16px;
+  font-weight:600;
+  float:right;
+  margin-right:10px;
+  margin-top:40px;
+  height:35px;
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  box-shadow:3px 3px 2px rgba(0,0,0,0.2);
+}
+
+#delivery-service-card-BigAmount {
+  border-color:#7fbcaa;
+}
+
+#delivery-service-card-toPoint {
+  border-color:#ce898c;
+}
+
+.delivery-service-Tabs {
+}
+
+.delivery-service-Tabs {
+  box-shadow:5px 6px 30px rgba(0,0,0,0.2);
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+}
+
+#delivery-service-card-btn-2 {
+  border-width:thin;
+}
+
+.ems-single-table-btn {
+  background-color:rgba(0,0,0,0);
+  border:none;
+  color:rgb(92,92,92);
+  text-align:center;
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  height:auto;
+  width:auto;
+}

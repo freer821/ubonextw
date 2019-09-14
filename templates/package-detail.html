@@ -1,0 +1,198 @@
+<div>
+    <div class="col" style="padding:15px;">
+        <form id="ems-single-list1" class="ems-single-list" style="background-color:#ffffff;padding:0px 0px 0px 0px;">
+            <div class="col" style="padding:0px;">
+                <div class="form-row" style="margin:0px;">
+                    <div class="col" style="height:50px;padding:5px 0px 0px 0px;"><label
+                            class="col-form-label EMS-Single-font EMS-Single-heading"
+                            style="font-size:17px;color:rgb(126,127,128);"><strong>订单详情</strong></label></div>
+                    <div class="col-12" style="padding:0px 5px 0px 0px;">
+                        <hr class="ems-single-card-HR" style="margin:0px 0px 10px 0px;">
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col">
+                        <div>
+                            <div class="row">
+                                <div class="col-xl-12 offset-xl-0" style="padding:0px 10px;"><label
+                                        class="col-form-label EMS-Single-font Order-titel">订单信息</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">订单号：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.package_no }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">物流单号：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.inland_code }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">备注：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.comment }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 0px 20px;">
+                                    <hr class="ems-single-card-HR2" style="margin:0px 0px 10px 0px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col">
+                        <div>
+                            <div class="row">
+                                <div class="col-xl-12 offset-xl-0" style="padding:0px 10px;"><label
+                                        class="col-form-label EMS-Single-font Order-titel">发件信息</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">发件人：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.sender }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">联系电话：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.sender_tel }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">详细地址：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.sender_addr }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 0px 20px;">
+                                    <hr class="ems-single-card-HR2" style="margin:0px 0px 10px 0px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col">
+                        <div>
+                            <div class="row">
+                                <div class="col-xl-12 offset-xl-0" style="padding:0px 10px;"><label
+                                        class="col-form-label EMS-Single-font Order-titel">收件信息</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">收件人：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">联系电话：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver_tel }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">详细地址：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver_addr }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 0px 20px;">
+                                    <hr class="ems-single-card-HR2" style="margin:0px 0px 10px 0px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col">
+                        <div>
+                            <div class="row">
+                                <div class="col-xl-12 offset-xl-0" style="padding:0px 10px;"><label
+                                        class="col-form-label EMS-Single-font Order-titel">包裹信息</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">内务信息：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.goods_descr }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">数量/单位：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.goods_quantity }}</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">目的地代码：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.des_code }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">月结号：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.sf_monthcard_no }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">产品名称：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.logistic_product }}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 0px 20px;">
+                                    <hr class="ems-single-card-HR2" style="margin:0px 0px 10px 0px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if selected_goods %}
+                    <div class="row" style="margin:0px;">
+                        <div class="col"><label class="col-form-label EMS-Single-font EMS-Single-subtitle"
+                                                style="font-size:17px;color:rgb(126,127,128);margin:0px 15px;"><strong>包裹内商品</strong><br></label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;">
+                        <div class="col-xl-12 offset-xl-0" style="padding:0px 28px 0px 28px;">
+                            <table id="ems-single-table-1" class="table table-striped table-bordered" cellspacing="0"
+                                   width="100%">
+                                <thead class="ems-single-table-heading">
+                                <tr>
+                                    <th>中文品牌名</th>
+                                    <th>原产地</th>
+                                    <th class="ems-single-table-middle">规格</th>
+                                    <th class="ems-single-table-middle">EAN码</th>
+                                    <th class="ems-single-table-middle">毛重(KG)</th>
+                                    <th class="ems-single-table-middle">单价(RMB)</th>
+                                    <th class="ems-single-table-middle">数量</th>
+                                </tr>
+                                </thead>
+                                <tbody id="goods_selected" class="ems-single-table-body">
+                                {% for g in selected_goods %}
+                                    <tr>
+                                        <td>{{ g.cn_name }}</td>
+                                        <td>{{ g.country_origin }}</td>
+                                        <td class="ems-single-table-middle">{{ g.norm }}</td>
+                                        <td class="ems-single-table-middle">{{ g.ean_code }}</td>
+                                        <td class="ems-single-table-middle">{{ g.brutto_weight }}</td>
+                                        <td class="ems-single-table-middle">{{ g.sale_price }}</td>
+                                        <td class="ems-single-table-middle">{{ g.num }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </form>
+    </div>
+    {% if tracks %}
+        <div class="padding">
+            <div class="box">
+                <div class="box-header">
+                    <h3>物流跟踪</h3>
+                </div>
+                <div class="box-body">
+                    <div class="p-a">
+                        <div class="streamline b-l m-b">
+                            {% for t in tracks %}
+                                <div class="sl-item">
+                                    <div class="sl-content">
+                                        <div class="sl-date text-muted">{{ t.updatedtime }}</div>
+                                        <p>{{ t.status }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

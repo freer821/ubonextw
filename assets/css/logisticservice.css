@@ -1,0 +1,172 @@
+.price-card-text-content {
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  float:left;
+  padding-left:10px;
+  font-weight:lighter;
+}
+
+.Price-Table-Link {
+  text-align:center;
+  font-family:"Helvetica Neue",Helvetica,Arial,
+ "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei",sans-serif;
+  font-weight:500;
+}
+
+a:hover {
+  color:#2980ef;
+}
+
+.price-Table-Link-right-line {
+  border-right:1px;
+}
+
+.vert-line {
+  font-weight:100;
+}
+
+#Price-Table-card-hov {
+  min-width:350px;
+  max-width:370px;
+  /*border-radius:20px;*/
+}
+
+.price-card-head {
+  font-weight:600;
+  float:none;
+  text-align:center;
+  font-weight:300;
+}
+
+.team-boxed {
+  color:#313437;
+  background-color:#eef4f7;
+}
+
+.team-boxed p {
+  color:#7d8285;
+}
+
+.team-boxed h2 {
+  font-weight:bold;
+  margin-bottom:40px;
+  padding-top:40px;
+  color:inherit;
+}
+
+@media (max-width:767px) {
+  .team-boxed h2 {
+    margin-bottom:25px;
+    padding-top:25px;
+    font-size:24px;
+  }
+}
+
+.team-boxed .intro {
+  font-size:16px;
+  max-width:500px;
+  margin:0 auto;
+}
+
+.team-boxed .intro p {
+  margin-bottom:0;
+}
+
+.team-boxed .people {
+  padding:50px 0;
+}
+
+.team-boxed .item {
+  text-align:center;
+}
+
+.team-boxed .item .box {
+  text-align:center;
+  padding:30px;
+  background-color:#fff;
+  margin-bottom:30px;
+}
+
+.team-boxed .item .name {
+  font-weight:bold;
+  margin-top:28px;
+  margin-bottom:8px;
+  color:inherit;
+}
+
+.team-boxed .item .title {
+  text-transform:uppercase;
+  font-weight:bold;
+  color:#d0d0d0;
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.team-boxed .item .description {
+  font-size:15px;
+  margin-top:15px;
+  margin-bottom:20px;
+}
+
+.team-boxed .item img {
+  max-width:160px;
+}
+
+.team-boxed .social {
+  font-size:18px;
+  color:#a2a8ae;
+}
+
+.team-boxed .social a {
+  color:inherit;
+  margin:0 10px;
+  display:inline-block;
+  opacity:0.7;
+}
+
+.team-boxed .social a:hover {
+  opacity:1;
+}
+
+.box {
+  box-shadow:0px 8px 30px rgba(0,0,0,0.2);
+}
+
+Price-Table-Heading {
+  text-align:center;
+}
+
+#Price-Table-card-hov {
+  box-shadow:5px 6px 30px rgba(0,0,0,0.2);
+  float:none;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.price-card-HR {
+  align-content:left;
+  width:100%;
+  color:rgb(0,0,0);
+  height:1px;
+  border:none;
+  border-top:1px solid #000;
+}
+
+.price-card-HR-vertical {
+  align-items:center;
+  width:1px;
+  size:41;
+  color:#2f435b;
+}
+
+div {
+}
+
+.price-card-vertical-line {
+  float:right;
+}
+
+.price-card-colum-mid {
+  align-items:center;
+}
