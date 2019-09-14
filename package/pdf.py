@@ -40,8 +40,7 @@ pdf_config = {
         "sender_address_1": {"x": 0.25, "y": 3.9, "fontsize": 7, "type": 1, "lineheight": 0.35, "linemaxcharacter": 40},
         "receiver_name_1": {"x": 0.25, "y": 3.1, "fontsize": 7, "type": 0},
         "receiver_tel_1": {"x": 2.25, "y": 3.1, "fontsize": 7, "type": 0},
-        "receiver_address_1": {"x": 0.25, "y": 2.77, "fontsize": 7, "type": 1, "lineheight": 0.35,
-                               "linemaxcharacter": 40},
+        "receiver_address_1": {"x": 0.25, "y": 2.77, "fontsize": 7, "type": 1, "lineheight": 0.35, "linemaxcharacter": 40},
         "goods_num": {"x": -0.68, "y": 1, "fontsize": 7, "type": 0},
         "goods_desc_1": {"x": 0.25, "y": 1.4, "fontsize": 7,"type": 1, "lineheight": 0.35, "linemaxcharacter": 30}
     }

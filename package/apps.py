@@ -92,6 +92,14 @@ def getPackageByID(pid):
     package = Package.objects.get(id=pid)
     return package
 
+def scancode_to_miandan_handle(code):
+    package = Package.objects.filter(inland_code=code).first()
+    if package is None:
+        return getresponsemsg(400, '单号未找到，请核对单号是否正确！')
+    else:
+        package_dict = model_to_dict(package)
+        return genPdf([package_dict])
+
 
 def genPdf(packages):
     content_array = []

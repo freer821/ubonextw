@@ -1,0 +1,70 @@
+<div class="row" style="margin:0px;">
+    <div class="col" style="padding:15px;">
+        <form id="ems-single-box-sender" class="ems-single-box"
+              style="background-color:#ffffff;padding:0px 0px 0px 0px;" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col" style="padding:0px;">
+                <div class="row" style="margin:0px;">
+                    <div class="col" style="height:50px;padding:5px 0px 0px 10px;"><label
+                            class="col-form-label EMS-Single-font EMS-Single-heading"
+                            style="font-size:17px;color:rgb(126,127,128);"><strong>扫码出面单</strong><br></label></div>
+                    <div class="col-12" style="padding:0px 5px 0px 0px;">
+                        <hr class="ems-single-card-HR" style="margin:0px 0px 15px 0px;">
+                    </div>
+                </div>
+                <div class="row" style="margin:0px;">
+                    <div class="col-8 col-sm-8 col-md-6 col-lg-6 col-xl-6"
+                         style="height:50px;padding:5px 15px 0px 10px;float:right;">
+
+                        <input class="form-control" type="text"
+                               maxlength="20"
+                               name="package_no"
+                               id="package_no" required="true"
+                               style="width:95%;margin:3px 0px;height:70%;">
+                        <span class="error-message">Error message here!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0px;">
+                <div class="col" style="height:50px;padding:5px 15px 0px 0px;float:right;"><a
+                        href="#"
+                        class="EMS-Single-font"
+                        style="margin:10px;font-size:15px;color:#007aa5;">注：输入单号后，点击回车会自动弹出PDF包裹面单，扫描枪请选择回车模式，只能使用chrome浏览器<br></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<link href="assets/js/libs/print/print.min.css" rel="stylesheet">
+<script src="assets/js/libs/print/print.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#package_no').keypress(function (e) {
+            if (e.which == 10 || e.which == 13) {
+                e.preventDefault();
+                var json_data = {
+                    'action': 'get_sf_pdf',
+                    'package_no': $("#package_no").val()
+                };
+
+                postsubmit('/scancode_to_miandan', JSON.stringify(json_data), function (response) {
+                    if (response.status == 200) {
+                        var byteCharacters = atob(response.msg);
+                        var byteNumbers = new Array(byteCharacters.length);
+                        for (var i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        var data_print = new Uint8Array(byteNumbers);
+                        const pdfBlob = new Blob([data_print], {type: "application/pdf"});
+                        const url = URL.createObjectURL(pdfBlob);
+                        printJS(url);
+                        $("#package_no").val('');
+                    } else {
+                        bootbox.alert('Error：' + response.msg);
+                    }
+                });
+            }
+        });
+    });
+</script>

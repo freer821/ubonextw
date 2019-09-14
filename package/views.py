@@ -50,6 +50,24 @@ def package_detail(request):
 
 
 @login_required
+def scancode_to_miandan(request):
+    try:
+        if request.method == 'POST':
+            content = json.loads(request.body)
+            if content.get('action', '') == 'get_sf_pdf':
+                package_no = content.get('package_no', '')
+                return JsonResponse(scancode_to_miandan_handle(package_no))
+            else:
+                return JsonResponse(getresponsemsg(400, '无效操作，请联系技术人员！'))
+
+        else:
+            return render(request, 'scan_code_to_pdf.html')
+
+    except Exception as e:
+        getLogger().error('scancode_to_miandan'+ str(e))
+        return HttpResponseRedirect('/')
+
+@login_required
 def package_action(request):
     try:
         action = request.GET.get('action', '')

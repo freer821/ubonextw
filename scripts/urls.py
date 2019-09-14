@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('packages', packagelist),
     path('package_detail', package_detail),
+    path('scancode_to_miandan', scancode_to_miandan),
     path('package_action', package_action),
 
     path('admin/', admin.site.urls)
