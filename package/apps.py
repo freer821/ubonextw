@@ -19,15 +19,17 @@ def upload_handle(jsonbody):
         if len(packages) == 0:
             return getresponsemsg(204, '未检测到任何包裹信息')
 
+        err_info = []
         for i in range(len(packages)):
             try:
-                inland_code = packages[i]['inland_code']
                 with transaction.atomic():
                     create_and_edit_pack(packages[i])
             except Exception as e:
-                raise Exception(inland_code+'__'+str(e))
-
-        response = getresponsemsg(200)
+                err_info.append(str(e))
+        if len(err_info) == 0:
+            response = getresponsemsg(200)
+        else:
+            response = getresponsemsg(400, str(err_info))
     except Exception as e:
         getLogger().error('upload_handle:'+str(e))
         response = getresponsemsg(500, str(e))
@@ -60,19 +62,7 @@ def create_and_edit_pack(pack):
                                          receiver_tel=receiver_tel,goods_descr=goods_descr,goods_quantity=goods_quantity,des_code=des_code,
                                          sf_monthcard_no=sf_monthcard_no, logistic_product=logistic_product,comment=comment)
     else:
-        package.sender=sender
-        package.sender_addr=sender_addr
-        package.sender_tel=sender_tel
-        package.receiver=receiver
-        package.receiver_addr=receiver_addr
-        package.receiver_tel=receiver_tel
-        package.goods_descr=goods_descr
-        package.goods_quantity=goods_quantity
-        package.des_code=des_code
-        package.sf_monthcard_no=sf_monthcard_no
-        package.logistic_product=logistic_product
-        package.comment=comment
-        package.save()
+        raise Exception(inland_code+':单号已存在！')
 
     return package
 
