@@ -1,4 +1,5 @@
 import json
+from scripts.utils import formatTime
 
 class PackageManager:
 
@@ -12,11 +13,13 @@ class PackageManager:
             goods_descr +=g.get('cn_name','') + ':'+g.get('num','')+','
 
         express_extra = json.loads(self._package.express_extra)
+        extra_services = json.loads(self._package.extra_services)
         package_json = {
             'id': self._package.id,
             'package_no':self._package.package_no,
             'express_code':self._package.express_code,
             'logistic_product': self._package.logistic_product,
+            'customer_reference_no': self._package.customer_reference_no,
 
             'receiver_name': self._package.receiver_name,
             'receiver_tel': self._package.receiver_tel,
@@ -35,9 +38,14 @@ class PackageManager:
             'sender_city': self._package.sender_city,
             'sender_hausnr': self._package.sender_hausnr,
 
+            'package_weight': self._package.package_weight,
+            'createdtime': formatTime(self._package.createdtime),
+            'updatedtime': formatTime(self._package.updatedtime),
+
             'express_extra': express_extra,
+            'extra_services':extra_services,
             'goods_descr': goods_descr,
-            'goods_dict': goods,
+            'goods': goods,
 
         }
 

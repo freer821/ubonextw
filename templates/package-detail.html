@@ -22,10 +22,18 @@
                                         class="EMS-Single-font Order-titel1">订单号：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.package_no }}</label></div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">客户参考号：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.customer_reference_no }}</label>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">物流单号：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.inland_code }}</label></div>
+                                        class="EMS-Single-font Order-titel3">{{ package.express_code }}</label></div>
                             </div>
                             <div class="row">
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">物流产品：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.logistic_product }}</label>
+                                </div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">备注：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.comment }}</label></div>
@@ -48,7 +56,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">发件人：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.sender }}</label></div>
+                                        class="EMS-Single-font Order-titel3">{{ package.sender_name }}</label></div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">联系电话：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.sender_tel }}</label></div>
@@ -56,7 +64,12 @@
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">详细地址：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.sender_addr }}</label></div>
+                                        class="EMS-Single-font Order-titel3">
+                                    {{ package.sender_street }}{{ package.sender_hausnr }}{{ package.sender_city }}</label>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">邮编：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.sender_postcode }}</label></div>
                             </div>
                             <div class="row">
                                 <div class="col-12" style="padding: 0px 20px;">
@@ -76,13 +89,20 @@
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">收件人：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.receiver }}</label></div>
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver_name }}</label></div>
+                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">收件人身份证：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver_identity }}</label>
+                                </div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">联系电话：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.receiver_tel }}</label></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
+                                        class="EMS-Single-font Order-titel1">邮编：</label><label
+                                        class="EMS-Single-font Order-titel3">{{ package.receiver_postcode }}</label></div>
+                                <div class="col-md-6 col-lg-6 col-xl-6 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">详细地址：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.receiver_addr }}</label></div>
                             </div>
@@ -103,19 +123,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
-                                        class="EMS-Single-font Order-titel1">内务信息：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.goods_descr }}</label></div>
-                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
-                                        class="EMS-Single-font Order-titel1">数量/单位：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.goods_quantity }}</label></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">目的地代码：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.des_code }}</label></div>
+                                        class="EMS-Single-font Order-titel3">{{ package.express_extra.destination_code }}</label></div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">月结号：</label><label
-                                        class="EMS-Single-font Order-titel3">{{ package.sf_monthcard_no }}</label></div>
+                                        class="EMS-Single-font Order-titel3">{{ package.express_extra.sf_month_card }}</label></div>
                                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-0" style="padding: 5px 10px;"><label
                                         class="EMS-Single-font Order-titel1">产品名称：</label><label
                                         class="EMS-Single-font Order-titel3">{{ package.logistic_product }}</label>
@@ -130,7 +142,7 @@
                     </div>
                 </div>
 
-                {% if selected_goods %}
+                {% if package.goods %}
                     <div class="row" style="margin:0px;">
                         <div class="col"><label class="col-form-label EMS-Single-font EMS-Single-subtitle"
                                                 style="font-size:17px;color:rgb(126,127,128);margin:0px 15px;"><strong>包裹内商品</strong><br></label>
@@ -143,23 +155,13 @@
                                 <thead class="ems-single-table-heading">
                                 <tr>
                                     <th>中文品牌名</th>
-                                    <th>原产地</th>
-                                    <th class="ems-single-table-middle">规格</th>
-                                    <th class="ems-single-table-middle">EAN码</th>
-                                    <th class="ems-single-table-middle">毛重(KG)</th>
-                                    <th class="ems-single-table-middle">单价(RMB)</th>
                                     <th class="ems-single-table-middle">数量</th>
                                 </tr>
                                 </thead>
                                 <tbody id="goods_selected" class="ems-single-table-body">
-                                {% for g in selected_goods %}
+                                {% for g in package.goods %}
                                     <tr>
                                         <td>{{ g.cn_name }}</td>
-                                        <td>{{ g.country_origin }}</td>
-                                        <td class="ems-single-table-middle">{{ g.norm }}</td>
-                                        <td class="ems-single-table-middle">{{ g.ean_code }}</td>
-                                        <td class="ems-single-table-middle">{{ g.brutto_weight }}</td>
-                                        <td class="ems-single-table-middle">{{ g.sale_price }}</td>
                                         <td class="ems-single-table-middle">{{ g.num }}</td>
                                     </tr>
                                 {% endfor %}

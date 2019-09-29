@@ -52,7 +52,7 @@ def getresponsemsg(status, msg='', err=''):
         'err': err
     }
 
-def getTime(t):
+def formatTime(t):
     return t.strftime("%Y-%m-%d %H:%M")
 
 def getParameter(parm):
