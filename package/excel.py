@@ -19,10 +19,10 @@ def readPackageDataFromXlsx_SF(file):
     while move_next_row(i, sheet):
         #
         i += 1
-        express_code= checkItem(sheet['A' + str(i)].value, True, '顺丰单号未填写，请检查录入'),
+        express_code = checkItem(sheet['A' + str(i)].value, True, '顺丰单号未填写，请检查录入')
 
         # goods 货物
-        good_ean_code = checkItem(sheet['K' + str(i)].value),
+        good_ean_code = checkItem(sheet['K' + str(i)].value)
         good_counts = checkItem(sheet['M' + str(i)].value, True, '商品数量未录入！请检查录入')
         good_cn_name = checkItem(sheet['L' + str(i)].value, True, '商品名称未录入！请检查录入')
 
