@@ -27,8 +27,8 @@ def upload_handle(jsonbody):
             try:
                 with transaction.atomic():
                     package = packages[i]
-                    exporess_code = package.get('exporess_code')
-                    create_pack_sf(package, goods[exporess_code])
+                    express_code = package.get('express_code')
+                    create_pack_sf(package, goods[express_code])
             except Exception as e:
                 err_info.append(str(e))
         if len(err_info) == 0:
@@ -66,12 +66,12 @@ def create_pack_sf(pack, goods):
     extra_services = json.dumps(pack.get('extra_services', ''))
     express_extra = json.dumps(pack.get('express_extra', ''))
 
-    exporess_code = pack.get('exporess_code', '')
+    express_code = pack.get('express_code', '')
     goods = json.dumps(goods)
 
-    package = Package.objects.filter(exporess_code=exporess_code).first()
+    package = Package.objects.filter(express_code=express_code).first()
     if package is None:
-        package = Package.objects.create(package_no = getPackageNo(), logistic_product= 'shunfeng', exporess_code = exporess_code, package_goods=goods,
+        package = Package.objects.create(package_no = getPackageNo(), logistic_product= 'shunfeng', express_code = express_code, package_goods=goods,
                                          receiver_identity=receiver_identity, receiver_name=receiver_name, receiver_postcode= receiver_postcode,
                                          receiver_tel=receiver_tel, receiver_province=receiver_province,
                                          receiver_city=receiver_city, receiver_district=receiver_district, receiver_street=receiver_street,
@@ -79,7 +79,7 @@ def create_pack_sf(pack, goods):
                                          sender_street=sender_street, sender_hausnr=sender_hausnr,
                                          extra_services=extra_services, express_extra=express_extra, comment=comment)
     else:
-        raise Exception(exporess_code+':单号已存在！')
+        raise Exception(express_code+':单号已存在！')
 
     return package
 
@@ -102,7 +102,7 @@ def getPackageByID(pid):
     return packmanager.getPackageJson()
 
 def scancode_to_miandan_handle(code):
-    package = Package.objects.filter(inland_code=code).first()
+    package = Package.objects.filter(package_no=code).first()
     if package is None:
         return getresponsemsg(400, '单号未找到，请核对单号是否正确！')
     else:
@@ -124,7 +124,7 @@ def genPdf(packages):
 
 def delPackages(packages):
     for p in packages:
-        package_in_db = Package.objects.filter(inland_code=p.get('exporess_code','')).first()
+        package_in_db = Package.objects.filter(express_code=p.get('express_code','')).first()
         if package_in_db is not None:
             package_in_db.delete()
 

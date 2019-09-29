@@ -61,6 +61,16 @@ def getParameter(parm):
     else:
         return parm
 
+def checkItem(item, is_required=False, err=''):
+    val = str(item).strip()
+    if item is None or len(val) == 0:
+        if is_required:
+            raise Exception(err)
+        else:
+            return ''
+    else:
+        return val
+
 def sendEmail(subject, html_content, to_email):
     with mail.get_connection() as connection:
         msg = mail.EmailMessage(
