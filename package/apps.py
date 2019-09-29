@@ -113,38 +113,9 @@ def scancode_to_miandan_handle(code):
 def genPdf(packages):
     content_array = []
     for p in packages:
-        goods_descr = p.get('goods_descr','') + ' *'+p.get('goods_quantity','')+', '
-
-        content = {
-            'logistic_category': 'sf_tw',
-
-            "barcode_no": p.get('inland_code',''),
-            "des_code": p.get('des_code',''),
-            "sender_name": p.get('sender',''),
-            "sender_tel": p.get('sender_tel',''),
-            "sender_address": p.get('sender_addr',''),
-            "receiver_name": p.get('receiver',''),
-            "receiver_tel": p.get('receiver_tel',''),
-            "receiver_address": p.get('receiver_addr',''),
-
-            "sf_monthcard_no": p.get('sf_monthcard_no',''),
-            "customer_no": p.get('sf_monthcard_no',''),
-
-            "goods_desc": goods_descr,
-            "barcode_no_1": p.get('inland_code',''),
-
-            "sender_name_1": p.get('sender',''),
-            "sender_tel_1": p.get('sender_tel',''),
-            "sender_address_1": p.get('sender_addr',''),
-            "receiver_name_1": p.get('receiver',''),
-            "receiver_tel_1": p.get('receiver_tel',''),
-            "receiver_address_1": p.get('receiver_addr',''),
-
-            "goods_desc_1": goods_descr,
-            "goods_num": p.get('goods_quantity','')
-        }
-
-        content_array.append(content)
+        package = Package.objects.get(id=p.get('id', ''))
+        pm = PackageManager(package)
+        content_array.append(pm.getPDFContent())
 
     pdfs_base64 = genPdfBase64(content_array)
 
@@ -153,7 +124,7 @@ def genPdf(packages):
 
 def delPackages(packages):
     for p in packages:
-        package_in_db = Package.objects.filter(inland_code=p.get('inland_code','')).first()
+        package_in_db = Package.objects.filter(inland_code=p.get('exporess_code','')).first()
         if package_in_db is not None:
             package_in_db.delete()
 
