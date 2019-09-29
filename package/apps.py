@@ -3,6 +3,7 @@ import json
 
 from django.apps import AppConfig
 from django.db import transaction
+from django.db.models import Q
 from django.forms.models import model_to_dict
 
 from .models import *
@@ -102,7 +103,7 @@ def getPackageByID(pid):
     return packmanager.getPackageJson()
 
 def scancode_to_miandan_handle(code):
-    package = Package.objects.filter(package_no=code).first()
+    package = Package.objects.filter(Q(package_no=code) | Q(customer_reference_no=code) | Q(express_code=code)).first()
     if package is None:
         return getresponsemsg(400, '单号未找到，请核对单号是否正确！')
     else:
