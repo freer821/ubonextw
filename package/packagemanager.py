@@ -13,8 +13,10 @@ class PackageManager:
 
         express_extra = json.loads(self._package.express_extra)
         package_json = {
-            'id': self._package.exporess_code,
-            'exporess_code':self._package.exporess_code,
+            'id': self._package.id,
+            'package_no':self._package.package_no,
+            'express_code':self._package.express_code,
+            'logistic_product': self._package.logistic_product,
 
             'receiver_name': self._package.receiver_name,
             'receiver_tel': self._package.receiver_tel,
@@ -31,6 +33,7 @@ class PackageManager:
             'sender_street': self._package.sender_street,
             'sender_postcode': self._package.sender_postcode,
             'sender_city': self._package.sender_city,
+            'sender_hausnr': self._package.sender_hausnr,
 
             'express_extra': express_extra,
             'goods_descr': goods_descr,

@@ -44,13 +44,13 @@ def readPackageDataFromXlsx_SF(file):
             package_weight = str(sheet['J' + str(i)].value).strip()
 
             # sender
-            sender_name = str(sheet['P' + str(i)].value).strip()
-            sender_tel = str(sheet['Q' + str(i)].value).strip()
-            sender_street = str(sheet['R' + str(i)].value).strip()
-            sender_postcode = str(sheet['S' + str(i)].value).strip()
-            sender_city = str(sheet['T' + str(i)].value).strip()
+            sender_name = str(sheet['N' + str(i)].value).strip()
+            sender_tel = str(sheet['O' + str(i)].value).strip()
+            sender_street = str(sheet['P' + str(i)].value).strip()
+            sender_postcode = str(sheet['Q' + str(i)].value).strip()
+            sender_city = str(sheet['R' + str(i)].value).strip()
             # 备注
-            comment = str(sheet['U' + str(i)].value).strip()
+            comment = str(sheet['S' + str(i)].value).strip()
 
             # 额外服务
             insurance = str(sheet['T' + str(i)].value).strip()

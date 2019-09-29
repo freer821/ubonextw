@@ -72,6 +72,17 @@ function PackageDetailFormatter(value, row, index) {
     return "<a href='#' onclick='checkPackage(" + row.id + ")' style='color: blue;'>" + value + "</a>";
 }
 
+function PackageExpressDetailFormatter(value, row, index) {
+    if (row.logistic_product === 'shunfeng') {
+        return "<p>" + row.logistic_product + "</p>" + "<p> 月结卡：" + row.express_extra.sf_month_card + "</p>"+ "<p> 目的地代码：" + row.express_extra.destination_code + "</p>";
+    } else {
+        return "<p>" + row.logistic_product + "</p>";
+
+    }
+
+}
+
+
 function checkPackage(pid) {
     loadSubPage("package_detail?pid=" + pid);
 }
@@ -163,17 +174,17 @@ function searchoders() {
 
     json_content = {
         'starttime': starttime.isValid() ? starttime.format("YYYY-MM-DD") : "2000-10-10",
-        'endtime': endtime.isValid() ? endtime.format("YYYY-MM-DD"): "2100-10-10",
+        'endtime': endtime.isValid() ? endtime.format("YYYY-MM-DD") : "2100-10-10",
         'search_array_name': search_array_name,
         'search_array': search_array.length > 0 ? search_array.split(" ") : [],
-        'pakcage_status':pakcage_status
+        'pakcage_status': pakcage_status
     };
 
     postsubmit('/orderfilter', JSON.stringify(json_content), function (response) {
         if (response.status == 200) {
             if (response.msg.rows.length > 0) {
-                bootbox.alert('共找到'+response.msg.rows.length+'记录');
-                $('#to-recieve-list-sorted-table').bootstrapTable({data:""});
+                bootbox.alert('共找到' + response.msg.rows.length + '记录');
+                $('#to-recieve-list-sorted-table').bootstrapTable({data: ""});
                 $('#to-recieve-list-sorted-table').bootstrapTable('load', response.msg.rows);
             } else {
                 bootbox.alert('为找到符合条件的包裹单，请调整条件后重新查询');

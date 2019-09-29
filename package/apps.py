@@ -98,7 +98,8 @@ def packagelist_handle(offset, limit):
 
 def getPackageByID(pid):
     package = Package.objects.get(id=pid)
-    return package
+    packmanager = PackageManager(package)
+    return packmanager.getPackageJson()
 
 def scancode_to_miandan_handle(code):
     package = Package.objects.filter(inland_code=code).first()

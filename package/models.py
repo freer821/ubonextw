@@ -30,7 +30,7 @@ class Package(models.Model):
     sender_street = models.CharField(max_length=100, default="")
     sender_hausnr = models.CharField(max_length=10, default="")
     customer_reference_no = models.CharField(max_length=50, unique=True, blank=True,null=True)
-    exporess_code = models.CharField(max_length=50, unique=True, blank=True,null=True)
+    express_code = models.CharField(max_length=50, unique=True, blank=True,null=True)
     express_extra = models.TextField(default="") # 快递公司附属属性
     extra_services = models.TextField(default="") # 各种服务
     package_weight = models.FloatField(default=0, validators=[validate_decimals])
