@@ -1,6 +1,6 @@
 import os
 
-env = os.environ.get('ENV')
+env = os.environ.get('UBONEX_ENV')
 
 if env == 'dev':
     print('starting dev environment.....')
