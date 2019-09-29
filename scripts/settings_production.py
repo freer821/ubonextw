@@ -2,7 +2,7 @@ from .settings_shared import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['tw.ubonex.de']
+ALLOWED_HOSTS = ['tw.ubonex.de', '167.179.71.172']
 
 DATABASES = {
     'default': {
