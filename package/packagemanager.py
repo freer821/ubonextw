@@ -1,5 +1,5 @@
 import json
-from scripts.utils import formatTime
+from scripts.utils import formatTime, formatStringToInt
 
 class PackageManager:
 
@@ -12,7 +12,7 @@ class PackageManager:
         goods = json.loads(self._package.package_goods)
         for g in goods:
             goods_descr +=g.get('cn_name','') + ':'+g.get('num',0)+','
-            goods_quantity += int(g.get('num',0))
+            goods_quantity += formatStringToInt(g.get('num'))
 
         express_extra = json.loads(self._package.express_extra)
         extra_services = json.loads(self._package.extra_services)

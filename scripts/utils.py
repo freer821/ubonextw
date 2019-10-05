@@ -61,6 +61,13 @@ def getParameter(parm):
     else:
         return parm
 
+def formatStringToInt(num_string):
+    try:
+        return int(float(str(num_string)))
+    except:
+        getLogger().error(formatStringToInt+' error:'+str(num_string))
+        return 0
+
 def checkItem(item, is_required=False, err=''):
     val = str(item).strip()
     if item is None or len(val) == 0:
